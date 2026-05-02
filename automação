@@ -1,0 +1,30 @@
+# Ex: “Quais produtos vendem mais?”
+# “Qual mês teve mais lucro?”
+# “Qual região vende melhor?”
+
+import pandas as pd
+
+df = pd.read_csv("sales_data.csv")
+print(df.head())
+print(df.columns)
+
+#quantidade vendida
+produto_vendido_max = df.groupby("Product_Category")["Quantity_Sold"].sum()
+print (produto_vendido_max)
+
+#maior custo
+maior = df["Unit_Cost"].max()
+print (maior)
+
+#menor custo
+menor = df["Unit_Cost"].min()
+print (menor)
+
+#mais vendido por região
+mais_vendido = df.groupby("Region")["Quantity_Sold"].sum()
+print (mais_vendido)
+
+#quantidade de metodos de pagamento por regiao
+meth_pagamento = df["Payment_Method"].count()
+print (meth_pagamento)
+
